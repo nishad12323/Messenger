@@ -261,6 +261,8 @@
         const sendButton = document.getElementById("sendButton");
         const messageInput = document.getElementById("messageInput");
         const chatBox = document.getElementById("chatBox");
+        var replies = ["Alright", "Nice.", "Got it!", "Okay!", "Sure.", "Very nice."]
+        var replyidx = 0
 
         // Sending message
         sendButton.addEventListener("click", function() {
@@ -297,7 +299,8 @@
             // Simulate a reply
             if (type === 'sent') {
                 setTimeout(() => {
-                    receiveMessage("Got it! 👌");
+                    receiveMessage(replies[replyidx]);
+                    replyidx++;
                 }, 1000);
             }
 
