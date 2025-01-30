@@ -1,1 +1,324 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f7fc;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: #0078d4;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .sidebar .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #d9e4f1;
+            margin-bottom: 8px;
+        }
+
+        .sidebar .contact, .sidebar .group {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 6px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar .contact:hover, .sidebar .group:hover {
+            background-color: #005a8d;
+        }
+
+        .sidebar .contact img, .sidebar .group img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .sidebar .contact span, .sidebar .group span {
+            font-size: 16px;
+        }
+
+        /* Chat Area Styles */
+        .chat-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header {
+            background-color: #0078d4;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-header .chat-title {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-header .chat-title img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .chat-header .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.sent {
+            justify-content: flex-end;
+        }
+
+        .message .text {
+            padding: 12px;
+            border-radius: 18px;
+            max-width: 70%;
+            font-size: 14px;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .message.sent .text {
+            background-color: #0078d4;
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.received .text {
+            background-color: #f1f3f6;
+            border-bottom-left-radius: 0;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 12px 20px;
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 14px 16px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .input-container button {
+            padding: 14px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .input-container button:hover {
+            background-color: #005f99;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .chat-area {
+                width: 100%;
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="header">Messenger</div>
+
+        <div class="section-title">Chats</div>
+        <div class="contact">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span>John Doe</span>
+        </div>
+        <div class="contact">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span>Jane Smith</span>
+        </div>
+
+        <div class="section-title">Groups</div>
+        <div class="group">
+            <img src="https://via.placeholder.com/40" alt="Group Avatar">
+            <span>Family Group</span>
+        </div>
+        <div class="group">
+            <img src="https://via.placeholder.com/40" alt="Group Avatar">
+            <span>Work Group</span>
+        </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area">
+        <div class="chat-header">
+            <div class="chat-title">
+                <img src="https://via.placeholder.com/40" alt="User Avatar">
+                <span>Chat with John</span>
+            </div>
+            <button class="close-btn">×</button>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will appear here -->
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type a message..." />
+            <button id="sendButton">➡️</button>
+        </div>
+    </div>
+
+    <script>
+        const sendButton = document.getElementById("sendButton");
+        const messageInput = document.getElementById("messageInput");
+        const chatBox = document.getElementById("chatBox");
+
+        // Sending message
+        sendButton.addEventListener("click", function() {
+            const messageText = messageInput.value.trim();
+            if (messageText !== "") {
+                sendMessage(messageText, 'sent');
+                messageInput.value = ""; // Clear input after sending
+            }
+        });
+
+        // Send message on Enter key press
+        messageInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                const messageText = messageInput.value.trim();
+                if (messageText !== "") {
+                    sendMessage(messageText, 'sent');
+                    messageInput.value = ""; // Clear input after sending
+                }
+            }
+        });
+
+        // Display sent message
+        function sendMessage(message, type) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", type);
+
+            const messageText = document.createElement("div");
+            messageText.classList.add("text");
+            messageText.textContent = message;
+
+            messageDiv.appendChild(messageText);
+            chatBox.appendChild(messageDiv);
+
+            // Simulate a reply
+            if (type === 'sent') {
+                setTimeout(() => {
+                    receiveMessage("Got it! 👌");
+                }, 1000);
+            }
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Display received message
+        function receiveMessage(message) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", "received");
+
+            const messageText = document.createElement("div");
+            messageText.classList.add("text");
+            messageText.textContent = message;
+
+            messageDiv.appendChild(messageText);
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+    </script>
+
+</body>
+</html>
