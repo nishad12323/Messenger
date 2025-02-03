@@ -4,12 +4,12 @@
     box-sizing: border-box;
     font-family: nunito, sans-serif;
     transition: 0.1s;
-    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #f4f7fc;
 }
 
@@ -78,7 +78,8 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #deffee;
+    height: 100vh;
 }
 
 .chat-header {
@@ -116,11 +117,15 @@ body {
 .chat-box {
     flex-grow: 1;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    border-radius: 30px;
+    margin: 25px;
     gap: 12px;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 .message {
@@ -156,18 +161,21 @@ body {
 .input-container {
     display: flex;
     padding: 12px 20px;
-    background-color: #fff;
+    background-color: #deffee;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-container input {
     flex-grow: 1;
     padding: 14px 16px;
     border-radius: 25px;
-    border: 1px solid #ddd;
+    border: none;
     font-size: 14px;
+}
+
+.input-container input:focus {
+    outline: none;
 }
 
 .input-container button {
@@ -201,7 +209,7 @@ body {
 }
 
 #sendButton:hover #sendSVG {
-    fill: #deffee;
+    fill: #fff;
 }
 
 .sendIcon {

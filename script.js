@@ -3,6 +3,7 @@ const messageInput = document.getElementById("messageInput");
 const chatBox = document.getElementById("chatBox");
 var replies = ["Alright", "Nice.", "Got it!", "Okay!", "Sure.", "Very nice."];
 var replyidx = 0;
+Notification.requestPermission();
 
 // Sending message
 sendButton.addEventListener("click", function () {
@@ -26,6 +27,11 @@ messageInput.addEventListener("keypress", function (event) {
 
 // Display sent message
 function sendMessage(message, type) {
+  sendButton.style.scale = "1.4";
+  setTimeout(() => {
+    sendButton.style.scale = "1";
+  }, 200);
+
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", type);
 
@@ -42,10 +48,11 @@ function sendMessage(message, type) {
 
   // Simulate a reply
   if (type === "sent") {
-    setTimeout(() => {
+    (async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       receiveMessage(replies[replyidx]);
       replyidx++;
-    }, 1000);
+    })();
   }
 
   chatBox.scrollTop = chatBox.scrollHeight;
@@ -53,6 +60,13 @@ function sendMessage(message, type) {
 
 // Display received message
 function receiveMessage(message) {
+  var notifi = new Notification("New message", {
+    body: message,
+  });
+
+  notifi.onclick = function () {
+    window.focus();
+  };
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", "received");
 
