@@ -1,71 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Messenger App</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <h2>Messenger App</h2>
-    
-    <!-- Register User Form -->
-    <h3>Register New User</h3>
-    <form id="registerForm">
-        <input type="text" id="username" placeholder="Username" required><br>
-        <input type="password" id="password" placeholder="Password" required><br>
-        <input type="email" id="email" placeholder="Email" required><br>
-        <button type="submit">Register</button>
-    </form>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="header">Messenger</div>
 
-    <!-- Send Message Form -->
-    <h3>Send Message</h3>
-    <form id="sendMessageForm">
-        <input type="text" id="sender_id" placeholder="Sender User ID" required><br>
-        <input type="text" id="receiver_id" placeholder="Receiver User ID" required><br>
-        <textarea id="message_text" placeholder="Type your message" required></textarea><br>
-        <button type="submit">Send Message</button>
-    </form>
+      <div class="section-title">Chats</div>
+      <div class="Contacts">
+        <div class="contact">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#00a651"
+          >
+            <path
+              d="M480-480.67q-66 0-109.67-43.66Q326.67-568 326.67-634t43.66-109.67Q414-787.33 480-787.33t109.67 43.66Q633.33-700 633.33-634t-43.66 109.67Q546-480.67 480-480.67ZM160-160v-100q0-36.67 18.5-64.17T226.67-366q65.33-30.33 127.66-45.5 62.34-15.17 125.67-15.17t125.33 15.5q62 15.5 127.34 45.17 30.33 14.33 48.83 41.83T800-260v100H160Z"
+            />
+          </svg>
+          <span>John Doe</span>
+        </div>
+        <div class="contact">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#00a651"
+          >
+            <path
+              d="M480-480.67q-66 0-109.67-43.66Q326.67-568 326.67-634t43.66-109.67Q414-787.33 480-787.33t109.67 43.66Q633.33-700 633.33-634t-43.66 109.67Q546-480.67 480-480.67ZM160-160v-100q0-36.67 18.5-64.17T226.67-366q65.33-30.33 127.66-45.5 62.34-15.17 125.67-15.17t125.33 15.5q62 15.5 127.34 45.17 30.33 14.33 48.83 41.83T800-260v100H160Z"
+            />
+          </svg>
+          <span>Jane Smith</span>
+        </div>
+      </div>
 
-    <div id="messages"></div>
-    
-    <script>
-    // Handle registration form submission
-    $('#registerForm').on('submit', function(e) {
-        e.preventDefault();
-        var username = $('#username').val();
-        var password = $('#password').val();
-        var email = $('#email').val();
-        
-        $.post('register.php', { username: username, password: password, email: email }, function(response) {
-            alert(response);
-        });
-    });
+      <div class="section-title">Groups</div>
+      <div class="Groups">
+        <div class="group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#00a651"
+          >
+            <path
+              d="M38.67-160v-100q0-34.67 17.83-63.17T105.33-366q69.34-31.67 129.67-46.17 60.33-14.5 123.67-14.5 63.33 0 123.33 14.5T611.33-366q31 14.33 49.17 42.83T678.67-260v100h-640Zm706.66 0v-102.67q0-56.66-29.5-97.16t-79.16-66.84q63 7.34 118.66 22.5 55.67 15.17 94 35.5 34 19.34 53 46.17 19 26.83 19 59.83V-160h-176ZM358.67-480.67q-66 0-109.67-43.66Q205.33-568 205.33-634T249-743.67q43.67-43.66 109.67-43.66t109.66 43.66Q512-700 512-634t-43.67 109.67q-43.66 43.66-109.66 43.66ZM732-634q0 66-43.67 109.67-43.66 43.66-109.66 43.66-11 0-25.67-1.83-14.67-1.83-25.67-5.5 25-27.33 38.17-64.67Q578.67-590 578.67-634t-13.17-80q-13.17-36-38.17-66 12-3.67 25.67-5.5 13.67-1.83 25.67-1.83 66 0 109.66 43.66Q732-700 732-634Z"
+            />
+          </svg>
+          <span>Family Group</span>
+        </div>
+        <div class="group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#00a651"
+          >
+            <path
+              d="M38.67-160v-100q0-34.67 17.83-63.17T105.33-366q69.34-31.67 129.67-46.17 60.33-14.5 123.67-14.5 63.33 0 123.33 14.5T611.33-366q31 14.33 49.17 42.83T678.67-260v100h-640Zm706.66 0v-102.67q0-56.66-29.5-97.16t-79.16-66.84q63 7.34 118.66 22.5 55.67 15.17 94 35.5 34 19.34 53 46.17 19 26.83 19 59.83V-160h-176ZM358.67-480.67q-66 0-109.67-43.66Q205.33-568 205.33-634T249-743.67q43.67-43.66 109.67-43.66t109.66 43.66Q512-700 512-634t-43.67 109.67q-43.66 43.66-109.66 43.66ZM732-634q0 66-43.67 109.67-43.66 43.66-109.66 43.66-11 0-25.67-1.83-14.67-1.83-25.67-5.5 25-27.33 38.17-64.67Q578.67-590 578.67-634t-13.17-80q-13.17-36-38.17-66 12-3.67 25.67-5.5 13.67-1.83 25.67-1.83 66 0 109.66 43.66Q732-700 732-634Z"
+            />
+          </svg>
+          <span>Work Group</span>
+        </div>
+      </div>
+    </div>
 
-    // Handle message sending
-    $('#sendMessageForm').on('submit', function(e) {
-        e.preventDefault();
-        var sender_id = $('#sender_id').val();
-        var receiver_id = $('#receiver_id').val();
-        var message_text = $('#message_text').val();
-        
-        $.post('send_message.php', { sender_id: sender_id, receiver_id: receiver_id, message_text: message_text }, function(response) {
-            alert(response);
-            $('#message_text').val(''); // clear message field
-        });
-    });
+    <!-- Chat Area -->
+    <div class="chat-area">
+      <div class="chat-header">
+        <div class="chat-title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#fff"
+          >
+            <path
+              d="M38.67-160v-100q0-34.67 17.83-63.17T105.33-366q69.34-31.67 129.67-46.17 60.33-14.5 123.67-14.5 63.33 0 123.33 14.5T611.33-366q31 14.33 49.17 42.83T678.67-260v100h-640Zm706.66 0v-102.67q0-56.66-29.5-97.16t-79.16-66.84q63 7.34 118.66 22.5 55.67 15.17 94 35.5 34 19.34 53 46.17 19 26.83 19 59.83V-160h-176ZM358.67-480.67q-66 0-109.67-43.66Q205.33-568 205.33-634T249-743.67q43.67-43.66 109.67-43.66t109.66 43.66Q512-700 512-634t-43.67 109.67q-43.66 43.66-109.66 43.66ZM732-634q0 66-43.67 109.67-43.66 43.66-109.66 43.66-11 0-25.67-1.83-14.67-1.83-25.67-5.5 25-27.33 38.17-64.67Q578.67-590 578.67-634t-13.17-80q-13.17-36-38.17-66 12-3.67 25.67-5.5 13.67-1.83 25.67-1.83 66 0 109.66 43.66Q732-700 732-634Z"
+            />
+          </svg>
+          <span>Chat with John</span>
+        </div>
+        <button class="close-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="m332-285.33 148-148 148 148L674.67-332l-148-148 148-148L628-674.67l-148 148-148-148L285.33-628l148 148-148 148L332-285.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Z"
+            />
+          </svg>
+        </button>
+      </div>
 
-    // Fetch messages
-    function fetchMessages() {
-        var sender_id = $('#sender_id').val();
-        var receiver_id = $('#receiver_id').val();
-        
-        $.get('get_messages.php', { sender_id: sender_id, receiver_id: receiver_id }, function(response) {
-            $('#messages').html(response);
-        });
-    }
-    
-    setInterval(fetchMessages, 3000); // Refresh messages every 3 seconds
-    </script>
-</body>
+      <div class="chat-box" id="chatBox"></div>
+
+      <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <div id="sendButton">
+          <svg id="sendSVG">
+            <path
+              d="M 19.3362 0.84289 C 20.9358 -0.280964 23.0642 -0.280963 24.6638 0.84289 C 25.6955 1.56782 26.9761 1.84119 28.2122 1.60042 C 30.1287 1.22715 32.073 2.0966 33.0792 3.77671 C 33.7282 4.86046 34.7873 5.63329 36.0141 5.91831 C 37.916 6.36016 39.3402 7.94873 39.5789 9.8946 C 39.7329 11.1498 40.3875 12.2884 41.3928 13.05 C 42.9513 14.2305 43.609 16.2636 43.0391 18.1387 C 42.6714 19.3483 42.8083 20.6559 43.4183 21.7622 C 44.3639 23.4774 44.1415 25.6033 42.8614 27.0836 C 42.0357 28.0384 41.6312 29.2888 41.7404 30.5487 C 41.9097 32.5019 40.8455 34.3532 39.0766 35.1825 C 37.9356 35.7175 37.0596 36.6946 36.6492 37.8902 C 36.0128 39.7437 34.2909 41.0001 32.3391 41.0352 C 31.0801 41.0578 29.8841 41.5926 29.025 42.5171 C 27.693 43.9504 25.6111 44.3949 23.8139 43.6296 C 22.6546 43.136 21.3454 43.136 20.1861 43.6296 C 18.3889 44.3949 16.307 43.9504 14.975 42.5171 C 14.1159 41.5926 12.9199 41.0578 11.6609 41.0352 C 9.70909 41.0001 7.98719 39.7437 7.35084 37.8902 C 6.94038 36.6946 6.06439 35.7175 4.9234 35.1825 C 3.15454 34.3532 2.09034 32.5019 2.25964 30.5487 C 2.36884 29.2888 1.9643 28.0384 1.1386 27.0836 C -0.141468 25.6033 -0.363946 23.4774 0.581724 21.7622 C 1.19172 20.6559 1.32856 19.3483 0.960927 18.1387 C 0.390988 16.2635 1.0487 14.2305 2.60722 13.05 C 3.61253 12.2884 4.2671 11.1498 4.4211 9.8946 C 4.65984 7.94873 6.08401 6.36016 7.98591 5.91831 C 9.21271 5.63329 10.2718 4.86046 10.9208 3.77671 C 11.927 2.0966 13.8713 1.22715 15.7878 1.60042 C 17.0239 1.84119 18.3045 1.56782 19.3362 0.84289 Z"
+            ></path>
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#00a651"
+            class="sendIcon"
+          >
+            <path
+              d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
