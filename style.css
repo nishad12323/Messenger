@@ -7,21 +7,41 @@
     scroll-behavior: smooth;
 }
 
+::selection {
+    background-color: #00a651;
+    color: white;
+}
+
 body {
     display: flex;
     height: 100vh;
     background-color: #f4f7fc;
+    max-width: 100vw;
+}
+
+html {
+    max-width: 100vw;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    width: 280px;
+    min-width: 280px;
     background-color: #b5f1d2;
     color: #000;
     display: flex;
     flex-direction: column;
     padding: 20px;
     height: 100vh;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00a651;
+    border-radius: 10px;
 }
 
 .sidebar .header {
@@ -73,22 +93,36 @@ body {
     font-size: 16px;
 }
 
+.contact:first-child,
+.group:first-child {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.contact:last-child,
+.group:last-child {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 /* Chat Area Styles */
 .chat-area {
     flex-grow: 1;
-    display: flex;
     flex-direction: column;
     background-color: #deffee;
     height: 100vh;
+    display: none;
+    border-top-left-radius: 30px;
 }
 
 .chat-header {
-    background-color: #00a651;
+    background-color: #b5f1d2;
     color: white;
     padding: 16px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 }
 
 .chat-header .chat-title {
@@ -98,11 +132,24 @@ body {
     align-items: center;
 }
 
+.chat-title {
+    border-radius: 30px;
+    background-color: #deffee;
+    padding: 12px;
+    flex-grow: 1;
+    display: flex;
+    cursor: pointer;
+}
+
+.chat-title:hover {
+    background-color: #fff;
+}
+
 .chat-header .chat-title svg {
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    border: 3px solid #fff;
+    border: 3px solid #00a651;
     border-radius: 50%;
 }
 
@@ -125,7 +172,7 @@ body {
     margin: 25px;
     gap: 12px;
     overflow-x: hidden;
-    scrollbar-width: none;
+    height: 100vh;
 }
 
 .message {
@@ -148,8 +195,7 @@ body {
 }
 
 .message.sent .text {
-    background-color: #00a651;
-    color: white;
+    background-color: #deffee;
     border-top-right-radius: 0;
 }
 
@@ -224,20 +270,40 @@ body {
 
 @keyframes send {
     0% {
-        transform: translateX(30vh);
+        scale: .65;
+        transform: translateX(20vh);
+    }
+
+    50% {
+        scale: 1.3;
+    }
+
+    75% {
+        scale: .8;
     }
 
     100% {
+        scale: 1;
         transform: translateX(0);
     }
 }
 
 @keyframes receive {
     0% {
-        transform: translateX(-30vh);
+        scale: .65;
+        transform: translateX(-20vh);
+    }
+
+    50% {
+        scale: 1.3;
+    }
+
+    75% {
+        scale: .8;
     }
 
     100% {
+        scale: 1;
         transform: translateX(0);
     }
 }

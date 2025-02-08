@@ -5,6 +5,23 @@ var replies = ["Alright", "Nice.", "Got it!", "Okay!", "Sure.", "Very nice."];
 var replyidx = 0;
 Notification.requestPermission();
 
+document.querySelectorAll(".contact").forEach((contact) => {
+  contact.addEventListener("click", function () {
+    //   document.querySelector(".active").classList.remove("active");
+    //   contact.classList.add("active");
+    //   document.getElementById("contactName").textContent =
+    //     contact.querySelector(".name").textContent;
+    //   document.getElementById("contactStatus").textContent =
+    //     contact.querySelector(".status").textContent;
+    //   document.getElementById("contactImage").src =
+    //     contact.querySelector(".image").src;
+    //   document.getElementById("contactImage").alt =
+    //     contact.querySelector(".name").textContent;
+    //   document.getElementById("messageInput").focus();
+    document.getElementsByClassName("chat-area")[0].style.display = "flex";
+  });
+});
+
 // Sending message
 sendButton.addEventListener("click", function () {
   const messageText = messageInput.value.trim();
@@ -27,10 +44,15 @@ messageInput.addEventListener("keypress", function (event) {
 
 // Display sent message
 function sendMessage(message, type) {
+  console.log(chatBox.scrollTop + chatBox.clientHeight, chatBox.scrollHeight);
+
   sendButton.style.scale = "1.4";
   setTimeout(() => {
     sendButton.style.scale = "1";
   }, 200);
+
+  var atBottom =
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight;
 
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", type);
@@ -42,7 +64,7 @@ function sendMessage(message, type) {
   messageDiv.appendChild(messageText);
   chatBox.appendChild(messageDiv);
 
-  messageDiv.style.animation = "send .4s";
+  messageText.style.animation = "send .4s";
 
   messageInput.focus();
 
@@ -55,7 +77,9 @@ function sendMessage(message, type) {
     })();
   }
 
-  chatBox.scrollTop = chatBox.scrollHeight;
+  if (atBottom) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
 }
 
 // Display received message
@@ -63,6 +87,9 @@ function receiveMessage(message) {
   var notifi = new Notification("New message", {
     body: message,
   });
+
+  var atBottom =
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight;
 
   notifi.onclick = function () {
     window.focus();
@@ -77,7 +104,9 @@ function receiveMessage(message) {
   messageDiv.appendChild(messageText);
   chatBox.appendChild(messageDiv);
 
-  messageDiv.style.animation = "receive .4s";
+  messageText.style.animation = "receive .4s";
 
-  chatBox.scrollTop = chatBox.scrollHeight;
+  if (atBottom) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
 }
