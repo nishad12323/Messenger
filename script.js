@@ -19,6 +19,9 @@ document.querySelectorAll(".contact").forEach((contact) => {
     //     contact.querySelector(".name").textContent;
     //   document.getElementById("messageInput").focus();
     document.getElementsByClassName("chat-area")[0].style.display = "flex";
+    if (window.innerWidth < 768) {
+      document.getElementsByClassName("sidebar")[0].style.display = "none";
+    }
   });
 });
 
@@ -52,7 +55,8 @@ function sendMessage(message, type) {
   }, 200);
 
   var atBottom =
-    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight;
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight ||
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 3;
 
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", type);
@@ -89,7 +93,8 @@ function receiveMessage(message) {
   });
 
   var atBottom =
-    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight;
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight ||
+    chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 3;
 
   notifi.onclick = function () {
     window.focus();

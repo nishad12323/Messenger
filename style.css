@@ -44,6 +44,10 @@ html {
     border-radius: 10px;
 }
 
+.sidebar::-webkit-scrollbar-track {
+    background-color: #deffee;
+}
+
 .sidebar .header {
     text-align: center;
     font-size: 24px;
@@ -109,10 +113,19 @@ html {
 .chat-area {
     flex-grow: 1;
     flex-direction: column;
-    background-color: #deffee;
+    background-color: #b5f1d2;
     height: 100vh;
     display: none;
     border-top-left-radius: 30px;
+}
+
+.chat-name {
+    font-size: 24px;
+    font-weight: bold;
+    border-top-left-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .chat-header {
@@ -121,8 +134,7 @@ html {
     padding: 16px 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: center;
 }
 
 .chat-header .chat-title {
@@ -130,6 +142,7 @@ html {
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .chat-title {
@@ -139,6 +152,8 @@ html {
     flex-grow: 1;
     display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 .chat-title:hover {
@@ -206,8 +221,9 @@ html {
 
 .input-container {
     display: flex;
-    padding: 12px 20px;
-    background-color: #deffee;
+    padding: 18px 20px;
+    margin: 0px 5px;
+    background-color: #b5f1d2;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -218,10 +234,11 @@ html {
     border-radius: 25px;
     border: none;
     font-size: 14px;
+    background-color: #deffee;
 }
 
 .input-container input:focus {
-    outline: none;
+    outline: 4px solid #00a651;
 }
 
 .input-container button {
@@ -239,10 +256,14 @@ html {
     background-color: #005f99;
 }
 
+#messageInput::hover {
+    background-color: #fff;
+}
+
 #sendSVG {
     max-width: 45px;
     max-height: 45px;
-    fill: #b5f1d2;
+    fill: #deffee;
 }
 
 #sendButton {
@@ -324,6 +345,9 @@ html {
 
     .chat-area {
         width: 100%;
-        margin-top: 20px;
+    }
+
+    .chat-area {
+        margin: 0;
     }
 }
