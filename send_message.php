@@ -1,9 +1,9 @@
 <?php
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "messenger_app";
+$servername = "sql202.infinityfree.com";
+$username = "if0_38280584";
+$password = "oxPjv99J26aVO9";
+$dbname = "if0_38280584_messages";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
