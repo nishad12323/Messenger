@@ -228,16 +228,85 @@ html {
     border-bottom-right-radius: 10px;
 }
 
-.input-container input {
+.input-container textarea {
     flex-grow: 1;
     padding: 14px 16px;
-    border-radius: 25px;
+    border-radius: 25px 10px 10px 25px;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     background-color: #deffee;
+    resize: none;
+    outline: none;
 }
 
-.input-container input:focus {
+emoji-picker {
+    --border-radius: 0 0 25px 25px;
+    --background: #deffee;
+    position: absolute;
+    --input-placeholder-color: #00a651;
+    --input-text-color: #00a651;
+    --input-border-color: #00a651;
+    --input-border-radius: 25px;
+    --input-background: #b5f1d2;
+    --input-padding: 14px 16px;
+    --input-font-size: 16px;
+    --input-resize: none;
+    --input-outline: none;
+    --button-padding: 14px;
+    --button-background: #00a651;
+    --button-color: white;
+    --button-border: none;
+    --button-border-radius: 50%;
+    --indicator-color: #00a651;
+    --indicator-font-size: 20px;
+    --indicator-font-weight: bold;
+    --outline-color: #00a651;
+    --outline-width: 4px;
+    --outline-style: solid;
+    --outline-radius: 25px;
+    --outline-offset: 0;
+    --outline-offset-x: 0;
+    --outline-offset-y: 0;
+    --button-hover: #b5f1d2;
+    --emoji-size: 45px;
+    bottom: 120.375px;
+    right: 25px;
+    z-index: 1000;
+    height: 60vh;
+}
+
+emoji-picker.hidden {
+    display: none;
+}
+
+.emojiPickerHeader {
+    content: "";
+    position: absolute;
+    border-bottom: 10px solid #b5f1d2;
+    width: calc(100% - 40px);
+    height: 10%;
+    top: calc(-10% - 40px);
+    background-color: #00a651;
+    color: white;
+    cursor: move;
+    padding: 20px;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    z-index: 1000000000000000000000000000;
+}
+
+#emojiButton {
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: #deffee;
+    border-radius: 10px 25px 25px 10px;
+}
+
+#emojiButton:hover {
+    background-color: #fff;
+}
+
+.input-container textarea:focus {
     outline: 4px solid #00a651;
 }
 
